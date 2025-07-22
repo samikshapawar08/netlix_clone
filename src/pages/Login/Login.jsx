@@ -4,11 +4,15 @@ import logo from '../../assets/logo.png';
 import { Form } from 'react-router-dom';
 
 const Login = () => {
+
+const[signState, setSignState] = useState('Sign In')
+
+
   return (
     <div className="login">
       <img src={logo} className='login-logo' alt="" /> 
-      <div className="logo-form">
-        <h1>Sign Up</h1>
+      <div className="login-form">
+        <h1>{signState}</h1>
         <form>
           <input type="text" placeholder="your name"/>
           <input type="email" placeholder="email"/>
@@ -24,6 +28,10 @@ const Login = () => {
 
           </div>
         </form>
+        <div className="form-switch">
+          <p>New to Netflix?<span>Sign Up Now</span></p>
+          <p>Already have an account?<span>Sign In</span></p>
+        </div>
 
       </div>
     </div>
