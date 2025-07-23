@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Login.css';
 import logo from '../../assets/logo.png';
 import { Form } from 'react-router-dom';
@@ -14,10 +14,11 @@ const[signState, setSignState] = useState('Sign In')
       <div className="login-form">
         <h1>{signState}</h1>
         <form>
-          <input type="text" placeholder="your name"/>
+          {signState === "Sign Up"?<input type="text" placeholder="your name"/>:<></>}
+          
           <input type="email" placeholder="email"/>
           <input type="password" placeholder="password"/>
-          <button>Sign up</button>
+          <button>{signState}</button>
           <div className="form-help">
             <div className="remember">
               <input type="checkbox"/>
@@ -29,8 +30,12 @@ const[signState, setSignState] = useState('Sign In')
           </div>
         </form>
         <div className="form-switch">
-          <p>New to Netflix?<span>Sign Up Now</span></p>
-          <p>Already have an account?<span>Sign In</span></p>
+          {signState === "Sign In"?
+          <p>New to Netflix?<span onClick={()=>{setSignState("Sign Up")}}>Sign Up Now</span></p>
+          :<p>Already have an account?<span onClick={()=>{setSignState("Sign In")}}>Sign In Now</span></p>
+          }
+          
+          
         </div>
 
       </div>
